@@ -22,6 +22,18 @@ set(FILES_FOR_FORMATTING
         test/test.c
         )
 
+if (MSVC OR MSYS OR MINGW)
+    target_compile_definitions(rtimeout PUBLIC -DRTIMEOUT_FOR_WINDOWS)
+endif ()
+
+if (APPLE)
+    target_compile_definitions(rtimeout PUBLIC -DRTIMEOUT_FOR_APPLE)
+endif ()
+
+if (UNIX AND NOT APPLE)
+    target_compile_definitions(rtimeout PUBLIC -DRTIMEOUT_FOR_UNIX)
+endif ()
+
 
 # clang-format
 find_program(clang_format NAMES clang-format)
