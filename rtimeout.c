@@ -41,9 +41,9 @@ inline int rt_is_enabled(rt* instance)
 
 #endif
 
-#if defined(RSERIAL_FOR_WINDOWS) || defined(RSERIAL_FOR_UNIX) || defined(RSERIAL_FOR_APPLE)
+#if defined(RTIMEOUT_FOR_WINDOWS) || defined(RTIMEOUT_FOR_UNIX) || defined(RTIMEOUT_FOR_APPLE)
 
-inline int rt_set(rt* instance, uint32_t timeout_us)
+int rt_set(rt* instance, unsigned long timeout_us)
 {
     if (instance == NULL || timeout_us == 0)
     {

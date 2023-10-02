@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __RTIMEOUT_DEF_H__
+#define __RTIMEOUT_DEF_H__
 
 #if defined(STM32G474xx) || defined(STM32F103xB) || defined(STM32F072xB) || defined(STM32F091xC) || \
     defined(STM32F407xx) || defined(STM32F429xx) || defined(STM32F765xx) || defined(STM32F103xE)
@@ -13,7 +14,7 @@ typedef struct
 
 #endif
 
-#if defined(RSERIAL_FOR_APPLE) || defined(RSERIAL_FOR_UNIX) || defined(RSERIAL_FOR_WINDOWS)
+#if defined(RTIMEOUT_FOR_APPLE) || defined(RTIMEOUT_FOR_UNIX) || defined(RTIMEOUT_FOR_WINDOWS)
 
 #    include "stdio.h"
 #    include "stdbool.h"
@@ -29,3 +30,5 @@ typedef struct
 } rt;
 
 #endif
+
+#endif  //__RTIMEOUT_DEF_H__

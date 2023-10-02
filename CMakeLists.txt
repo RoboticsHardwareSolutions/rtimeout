@@ -8,8 +8,8 @@ project(rtimeout_test
 add_library(rtimeout STATIC
         rtimeout.c
         rtimeout.h
+        rtimeout_def.h
         )
-
 
 add_executable(rtimeout_test
         test/runit/src/runit.c
@@ -19,18 +19,22 @@ add_executable(rtimeout_test
 set(FILES_FOR_FORMATTING
         rtimeout.h
         rtimeout.c
+        rtimeout_def.h
         test/test.c
         )
 
 if (MSVC OR MSYS OR MINGW)
+    target_compile_definitions(rtimeout_test PUBLIC -DRTIMEOUT_FOR_WINDOWS)
     target_compile_definitions(rtimeout PUBLIC -DRTIMEOUT_FOR_WINDOWS)
 endif ()
 
 if (APPLE)
+    target_compile_definitions(rtimeout_test PUBLIC -DRTIMEOUT_FOR_APPLE)
     target_compile_definitions(rtimeout PUBLIC -DRTIMEOUT_FOR_APPLE)
 endif ()
 
 if (UNIX AND NOT APPLE)
+    target_compile_definitions(rtimeout_test PUBLIC -DRTIMEOUT_FOR_UNIX)
     target_compile_definitions(rtimeout PUBLIC -DRTIMEOUT_FOR_UNIX)
 endif ()
 
