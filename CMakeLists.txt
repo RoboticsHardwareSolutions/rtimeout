@@ -23,6 +23,10 @@ set(FILES_FOR_FORMATTING
         test/test.c
         )
 
+target_include_directories(rtimeout
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR})
+
 if (MSVC OR MSYS OR MINGW)
     target_compile_definitions(rtimeout_test PUBLIC -DRTIMEOUT_FOR_WINDOWS)
     target_compile_definitions(rtimeout PUBLIC -DRTIMEOUT_FOR_WINDOWS)
@@ -45,7 +49,6 @@ if (NOT clang_format)
     message(STATUS "Could not locate clang-format")
 else ()
     file(GLOB format_files ${FILES_FOR_FORMATTING})
-    message(STATUS "Using clang-format: ${clang_format}; files: ${format_files}")
     add_custom_target(rtimeout_format COMMAND ${clang_format} -i -fallback-style=none -style=file --verbose ${format_files})
 endif ()
 
