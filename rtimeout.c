@@ -1,4 +1,5 @@
 #include "rtimeout.h"
+#include "stdio.h"
 
 #if defined(STM32F072xB) || defined(STM32F091xC) || defined(STM32F103xB) || defined(STM32F407xx) || \
     defined(STM32F429xx) || defined(STM32F103xE) || defined(STM32F765xx) || defined(STM32G474xx)
@@ -9,8 +10,7 @@ inline int rt_set(rt* instance, unsigned long timeout_us)
     {
         return -1;
     }
-
-    instance->start_time = osKernelSysTick();
+    instance->start_time = get_tick();
     instance->timeout    = timeout_us / 1000;
     return 0;
 }
@@ -20,7 +20,7 @@ inline int rt_timed_out(rt* instance)
     if (instance == NULL)
         return -1;
 
-    unsigned long current_time = osKernelSysTick();
+    unsigned long current_time = get_tick();
     unsigned long elapsed_time = current_time - instance->start_time;
     int           result       = instance->timeout > 0 && elapsed_time > instance->timeout ? 1 : 0;
 

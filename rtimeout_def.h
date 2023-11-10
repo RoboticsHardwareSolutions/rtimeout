@@ -4,7 +4,13 @@
 #if defined(STM32G474xx) || defined(STM32F103xB) || defined(STM32F072xB) || defined(STM32F091xC) || \
     defined(STM32F407xx) || defined(STM32F429xx) || defined(STM32F765xx) || defined(STM32F103xE)
 
+#ifdef CMSIS_OS_H_
 #    include "cmsis_os.h"
+#define get_tick() osKernelSysTick()
+#else
+#include "stm32f1xx_hal.h"
+#define get_tick() HAL_GetTick()
+#endif
 
 typedef struct
 {
