@@ -71,7 +71,7 @@ inline int rt_timed_out(rt* instance)
     uint32_t elapsed_time = (uint32_t) ((current_time.tv_sec - instance->start_time.tv_sec) * 1000000 +
                                         current_time.tv_usec - instance->start_time.tv_usec);
 
-    bool result = instance->timeout > 0 && elapsed_time > instance->timeout ? 1 : 0;
+    int result = instance->timeout > 0 && elapsed_time > instance->timeout ? 1 : 0;
 
     if (result)
     {
