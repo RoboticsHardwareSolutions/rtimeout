@@ -20,6 +20,7 @@ void test_timeout(void)
     usleep(1000100);
     runit_true(rt_timed_out(&timeout) == 1);
 }
+
 int main()
 {
     test_timeout();
