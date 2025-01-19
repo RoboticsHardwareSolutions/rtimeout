@@ -1,3 +1,0 @@
-[submodule "test/runit"]
-	path = test/runit
-	url = https://github.com/RoboticsHardwareSolutions/runit.git

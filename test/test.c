@@ -1,5 +1,5 @@
-#include "runit/src/runit.h"
-#include "../rtimeout.h"
+#include "runit.h"
+#include "rtimeout.h"
 #include "unistd.h"
 
 void test_timeout(void)
