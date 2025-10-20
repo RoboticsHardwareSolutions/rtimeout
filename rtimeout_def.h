@@ -2,7 +2,7 @@
 
 #if defined(STM32G474xx) || defined(STM32F103xB) || defined(STM32F072xB) ||    \
     defined(STM32F091xC) || defined(STM32F407xx) || defined(STM32F429xx) ||    \
-    defined(STM32F765xx) || defined(STM32F103xE)
+    defined(STM32F765xx) || defined(STM32F103xE) || defined(STM32F0B1xx)
 
 #ifdef CMSIS_OS_H_
 #include "cmsis_os.h"
@@ -10,6 +10,8 @@
 #else
 #if defined(STM32F765xx)
 #include "stm32f7xx_hal.h"
+#elif defined(STM32G0B1xx)
+#include "stm32g0xx_hal.h"
 #elif defined(STM32G474xx)
 #include "stm32g4xx_hal.h"
 #elif defined(STM32F429xx) || defined(STM32F407xx)
