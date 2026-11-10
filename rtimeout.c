@@ -1,9 +1,10 @@
 #include "rtimeout.h"
 #include "stdio.h"
 
-#if defined(STM32F072xB) || defined(STM32F091xC) || defined(STM32F103xB) || defined(STM32F407xx) || \
-    defined(STM32F429xx) || defined(STM32F103xE) || defined(STM32F765xx) || defined(STM32G474xx) || \
-    defined(STM32G0B1xx)
+/* RHS core and STM32 HAL both count the tick in milliseconds */
+#if defined(RTIMEOUT_FOR_RHS) || defined(STM32F072xB) || defined(STM32F091xC) || defined(STM32F103xB) || \
+    defined(STM32F407xx) || defined(STM32F429xx) || defined(STM32F103xE) || defined(STM32F765xx) ||    \
+    defined(STM32G474xx) || defined(STM32G0B1xx)
 
 inline int rt_set(rt* instance, unsigned long timeout_us)
 {

@@ -2,6 +2,9 @@
 
 Compatibility with Linux, MacOS, Windows and STM32
 
+On STM32 the tick is `HAL_GetTick()`. With `RTIMEOUT_FOR_RHS` defined it is the tick of the RHS core,
+`rhs_get_tick()`: use it when FreeRTOS owns SysTick and nothing advances the HAL tick.
+
 Example:
 ```c
 rt timeout;
